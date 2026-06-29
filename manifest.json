@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "PDF 划词翻译",
+  "version": "1.0.0",
+  "description": "PDF/网页划词翻译，支持 DeepSeek / OpenAI / 自定义 LLM 供应商",
+  "permissions": ["storage", "contextMenus", "notifications"],
+  "host_permissions": ["<all_urls>", "file:///*"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PDF 划词翻译"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

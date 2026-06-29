@@ -1,0 +1,21 @@
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Extension build
+*.zip
+*.crx
+
+# Environment / secrets
+.env
+.env.local
+*.key

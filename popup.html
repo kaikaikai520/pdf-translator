@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 340px; font: 13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color: #333; padding: 0; }
+.header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: #4A90D9; color: #fff; }
+.header h1 { font-size: 13px; font-weight: 600; }
+.panel { padding: 10px 14px; }
+textarea { width: 100%; height: 80px; padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px; font: 13px/1.5 inherit; resize: vertical; outline: none; }
+textarea:focus { border-color: #4A90D9; }
+.btn-row { display: flex; gap: 6px; margin-top: 8px; }
+.btn { flex: 1; padding: 7px 0; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; text-align: center; }
+.btn-primary { background: #4A90D9; color: #fff; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-ghost { background: #f0f0f0; color: #666; }
+.btn-ghost:hover { background: #e5e5e5; }
+.result { margin-top: 10px; display: none; padding: 10px 12px; border-radius: 6px; background: #f8f9fb; font-size: 13px; line-height: 1.6; max-height: 200px; overflow-y: auto; word-break: break-word; }
+.result .label { font-size: 11px; color: #999; margin-bottom: 4px; }
+.result .loading { color: #999; }
+.status { margin-top: 8px; font-size: 11px; color: #999; }
+.footer { padding: 6px 14px; border-top: 1px solid #f0f0f0; font-size: 10px; color: #ccc; text-align: center; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>划词翻译</h1>
+  <span id="statusDot" style="font-size:10px;opacity:0.6">●</span>
+</div>
+<div class="panel">
+  <textarea id="inputText" placeholder="在 PDF 中选中文字后 Ctrl+C 复制，然后点这里 Ctrl+V 粘贴..."></textarea>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="translateBtn">翻译</button>
+    <button class="btn btn-ghost" id="clearBtn">清空</button>
+  </div>
+  <div class="result" id="resultArea">
+    <div class="label">翻译结果</div>
+    <div id="resultText"></div>
+  </div>
+  <div class="status" id="statusText">选中文字 → 右键「翻译选中文本」即译，或粘贴到此处手动翻译</div>
+</div>
+<div class="footer">
+  <a href="#" id="openOptions" style="color:#999;text-decoration:none">⚙ 设置</a>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>

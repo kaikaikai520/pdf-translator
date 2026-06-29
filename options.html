@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PDF 划词翻译 - 设置</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font: 14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color: #333; background: #f5f7fa; padding: 30px; max-width: 640px; margin: 0 auto; }
+h1 { font-size: 22px; margin-bottom: 24px; color: #1a1a2e; }
+.section { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.section h2 { font-size: 15px; color: #4A90D9; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
+.form-group { margin-bottom: 14px; }
+.form-group:last-child { margin-bottom: 0; }
+label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #555; }
+label .desc { font-weight: 400; color: #999; font-size: 12px; }
+input[type="text"], input[type="password"], textarea, select { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+input:focus, textarea:focus, select:focus { border-color: #4A90D9; }
+textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+select { background: #fff; }
+.presets { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.presets button { padding: 5px 14px; border: 1px solid #ddd; border-radius: 14px; background: #f8f9fb; cursor: pointer; font-size: 12px; color: #555; transition: all 0.15s; }
+.presets button:hover { border-color: #4A90D9; color: #4A90D9; background: #eff4fc; }
+.presets button.active { border-color: #4A90D9; background: #4A90D9; color: #fff; }
+.actions { margin-top: 16px; display: flex; gap: 10px; align-items: center; }
+.btn { padding: 9px 28px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; transition: opacity 0.15s; }
+.btn-primary { background: #4A90D9; color: #fff; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-ghost { background: transparent; color: #999; border: 1px solid #ddd; }
+.btn-ghost:hover { color: #666; border-color: #bbb; }
+#status { font-size: 13px; color: #4CAF50; opacity: 0; transition: opacity 0.3s; }
+#status.show { opacity: 1; }
+</style>
+</head>
+<body>
+<h1>PDF 划词翻译 设置</h1>
+
+<div class="section">
+  <h2>基本设置</h2>
+  <div class="form-group">
+    <label>启用扩展</label>
+    <label style="display:flex;align-items:center;gap:8px;font-weight:400">
+      <input type="checkbox" id="enabled"> 开启划词翻译
+    </label>
+  </div>
+</div>
+
+<div class="section">
+  <h2>LLM 供应商</h2>
+  <div class="presets">
+    <button data-preset="deepseek">DeepSeek</button>
+    <button data-preset="openai">OpenAI</button>
+    <button data-preset="openrouter">OpenRouter</button>
+    <button data-preset="custom">自定义</button>
+  </div>
+  <div class="form-group">
+    <label>供应商名称</label>
+    <input type="text" id="provider" placeholder="DeepSeek">
+  </div>
+  <div class="form-group">
+    <label>API 地址 <span class="desc">完整的 Chat Completions 端点 URL</span></label>
+    <input type="text" id="apiUrl" placeholder="https://api.deepseek.com/chat/completions">
+  </div>
+  <div class="form-group">
+    <label>模型名称</label>
+    <input type="text" id="model" placeholder="deepseek-chat">
+  </div>
+  <div class="form-group">
+    <label>API Key</label>
+    <input type="password" id="apiKey" placeholder="sk-...">
+  </div>
+  <div class="form-group">
+    <label>系统提示词 <span class="desc">翻译指令</span></label>
+    <textarea id="systemPrompt" rows="3">Translate the following English text to Chinese. Return ONLY the translation result, no explanations, no notes, no quotes around the text.</textarea>
+  </div>
+</div>
+
+<div class="actions">
+  <button class="btn btn-primary" id="saveBtn">保存设置</button>
+  <button class="btn btn-ghost" id="resetBtn">恢复默认</button>
+  <span id="status">✓ 已保存</span>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
